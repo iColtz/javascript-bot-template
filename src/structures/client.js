@@ -1,6 +1,7 @@
 require('dotenv/config');
 const { Client, Collection } = require('discord.js');
 const { eventRegistry, commandRegistry } = require('../registries/export/index');
+const Util = require('./util');
 
 module.exports = class DiscordClient extends Client {
 
@@ -16,6 +17,8 @@ module.exports = class DiscordClient extends Client {
         this.aliases = new Collection();
 
         this.cooldowns = new Collection();
+
+        this.util = new Util(this);
 
         this.prefix = process.env.PREFIX;
     }
