@@ -15,6 +15,8 @@ module.exports = class DiscordClient extends Client {
 
         this.aliases = new Collection();
 
+        this.cooldowns = new Collection();
+
         this.prefix = process.env.PREFIX;
     }
 
