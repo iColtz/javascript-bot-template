@@ -55,6 +55,10 @@ module.exports = class extends Event {
             setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
         }
 
+        if (command.memberPermission && !message.member.hasPermission(command.memberPermission)) {
+            return message.channel.send('You don\'t have permissions to execute this command.');
+        }
+
         try {
             command.execute(message, args);
         }
