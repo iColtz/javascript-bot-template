@@ -1,0 +1,19 @@
+{
+  "name": "discord-bot-template",
+  "version": "1.0.0",
+  "description": "Simple discord bot template",
+  "main": "./src/bot",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iColtz/Discord-Bot-Base.git"
+  },
+  "author": "iColtz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iColtz/Discord-Bot-Base/issues"
+  },
+  "homepage": "https://github.com/iColtz/Discord-Bot-Base#readme"
+}
