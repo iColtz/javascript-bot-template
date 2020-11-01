@@ -59,6 +59,11 @@ module.exports = class extends Event {
             return message.channel.send('You don\'t have permissions to execute this command.');
         }
 
+        if (command.botPermission && !message.guild.me.hasPermission(command.botPermission)) {
+            const botPermissions = command.botPermission.map(perm => `\`${perm.toLowerCase().replace(/_/g, ' ')}\``).join(', ');
+            return message.channel.send(`I don't have permission to execute this command. Make sure I have ${botPermissions} permissions`);
+        }
+
         try {
             command.execute(message, args);
         }

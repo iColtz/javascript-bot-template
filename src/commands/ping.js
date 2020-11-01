@@ -11,6 +11,7 @@ module.exports = class extends Command {
             guildOnly: false,
             ownerOnly: false,
             nsfw: false,
+            botPermission: ['SEND_MESSAGES'],
         });
     }
 
