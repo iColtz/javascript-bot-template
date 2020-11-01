@@ -10,7 +10,7 @@ module.exports = class extends Event {
     }
 
     async execute(message) {
-        if (!message.guild || !message.content.startsWith(this.client.prefix)) return;
+        if (!message.content.startsWith(this.client.prefix)) return;
 
         const [commandName, ...args] = message.content.slice(this.client.prefix.length).trim().split(/ +/g); 
 
@@ -18,6 +18,10 @@ module.exports = class extends Event {
             || this.client.commands.get(this.client.aliases.get(commandName));
 
         if (!command) return;
+        
+        if (command.guildOnly && message.channel.type === 'dm') {
+            return message.channel.send('I can only execute this command in a guild.');
+        }
 
         if (command.cooldown) {
             const { cooldowns } = this.client;
