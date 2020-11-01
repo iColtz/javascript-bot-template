@@ -2,7 +2,7 @@
   "name": "discord-bot-template",
   "version": "1.0.0",
   "description": "Simple discord bot template",
-  "main": "./src/bot",
+  "main": "./src/bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
