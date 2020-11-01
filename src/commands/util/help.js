@@ -30,7 +30,7 @@ module.exports = class extends Command {
             embed.setDescription('For additional info on a command, use `?help <command>`');
 
             for (const category of categories) {
-                embed.addField(category, this.client.commands.filter(c => c.category === category).map(c => `\`${c.name}\``).join(' '));
+                embed.addField(category || 'Misc', this.client.commands.filter(c => c.category === category).map(c => `\`${c.name}\``).join(' '));
             }
         }
 
