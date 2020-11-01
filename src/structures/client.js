@@ -1,6 +1,6 @@
 require('dotenv/config');
 const { Client, Collection } = require('discord.js');
-const { eventRegistry } = require('../registries/export/index');
+const { eventRegistry, commandRegistry } = require('../registries/export/index');
 
 module.exports = class DiscordClient extends Client {
 
@@ -10,10 +10,17 @@ module.exports = class DiscordClient extends Client {
         });
 
         this.events = new Collection();
+
+        this.commands = new Collection();
+
+        this.aliases = new Collection();
+
+        this.prefix = process.env.PREFIX;
     }
 
     async start() {
         super.login(process.env.BOT_TOKEN);
         eventRegistry(this);
+        commandRegistry(this);
     }
 };
