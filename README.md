@@ -12,7 +12,7 @@ npm install
 ```
 
 ## ⚙️  Configuration
-Rename the file `.envEXAMPLE` to `.env` and fill out the values
+Rename the file `.env.example` to `.env` and fill out the values
 
 ⚠️  **Note: Never share your tokens publicly**  ⚠️
 ```
