@@ -10,6 +10,7 @@ module.exports = class extends Command {
             cooldown: 3,
             guildOnly: false,
             ownerOnly: false,
+            nsfw: false,
         });
     }
 

@@ -28,6 +28,10 @@ module.exports = class extends Event {
             return message.channel.send('I can only execute this command in a guild.');
         }
 
+        if (command.nsfw && !message.channel.nsfw) {
+            return message.channel.send('This command can only be used in a NSFW channel.');
+        }
+
         if (command.cooldown) {
             const { cooldowns } = this.client;
 
