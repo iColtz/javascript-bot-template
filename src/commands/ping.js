@@ -7,6 +7,7 @@ module.exports = class extends Command {
             name: 'ping',
             description: 'Pong!',
             category: 'Util',
+            cooldown: 3,
         });
     }
 
