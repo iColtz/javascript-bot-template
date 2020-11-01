@@ -6,12 +6,8 @@ module.exports = class extends Command {
         super(...args, {
             name: 'ping',
             description: 'Pong!',
-            category: 'Util',
             cooldown: 3,
             guildOnly: false,
-            ownerOnly: false,
-            nsfw: false,
-            botPermission: ['SEND_MESSAGES'],
         });
     }
 
