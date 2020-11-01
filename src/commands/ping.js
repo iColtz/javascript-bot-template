@@ -9,6 +9,7 @@ module.exports = class extends Command {
             category: 'Util',
             cooldown: 3,
             guildOnly: false,
+            ownerOnly: false,
         });
     }
 

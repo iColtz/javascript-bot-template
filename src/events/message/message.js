@@ -1,3 +1,4 @@
+require('dotenv/config');
 const Event = require('../../structures/bases/eventBase');
 const { Collection } = require('discord.js');
 
@@ -18,6 +19,10 @@ module.exports = class extends Event {
             || this.client.commands.get(this.client.aliases.get(commandName));
 
         if (!command) return;
+
+        if (command.ownerOnly && message.member.id !== process.env.BOT_OWNERID) {
+            return message.channel.send('This command can only be used by the bot owner.');
+        }
         
         if (command.guildOnly && message.channel.type === 'dm') {
             return message.channel.send('I can only execute this command in a guild.');
