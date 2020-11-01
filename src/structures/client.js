@@ -1,5 +1,6 @@
 require('dotenv/config');
-const { Client } = require('discord.js');
+const { Client, Collection } = require('discord.js');
+const { eventRegistry } = require('../registries/export/index');
 
 module.exports = class DiscordClient extends Client {
 
@@ -8,16 +9,11 @@ module.exports = class DiscordClient extends Client {
             disableMentions: 'everyone',
         });
 
-        this.on('ready', () => console.log('Yoo this is ready!'));
-
-        this.on('message', (message) => {
-            if (message.content === '!ping') {
-                return message.channel.send(`Pong! ${this.ws.ping}ms`);
-            }
-        });
+        this.events = new Collection();
     }
 
     async start() {
         super.login(process.env.BOT_TOKEN);
+        eventRegistry(this);
     }
 };
