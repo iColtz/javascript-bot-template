@@ -11,6 +11,8 @@ class client extends Client {
     this.token = config.token;
 
     this.events = new Collection();
+
+    this.commands = new Collection();
   }
 
   start() {
