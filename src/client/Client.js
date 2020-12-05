@@ -10,6 +10,8 @@ class client extends Client {
 
     this.token = config.token;
 
+    this.prefix = config.prefix;
+
     this.events = new Collection();
 
     this.commands = new Collection();
