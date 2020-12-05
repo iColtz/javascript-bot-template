@@ -25,8 +25,9 @@ class MessageEvent extends Event {
         return message.channel.send(`That is not a valid usage of this command check out \`${this.client.prefix}help ${command.id}\` for more info!`);
       }
       const userPermissions = command.userPermissions;
+      const clientPermissions = command.clientPermissions;
+      const missingPermissions = [];
       if (userPermissions.length) {
-        const missingPermissions = [];
         for (let i = 0; i < userPermissions.length; i++) {
           const hasPermission = message.member.hasPermission(userPermissions[i]);
           if (!hasPermission) {
@@ -35,6 +36,17 @@ class MessageEvent extends Event {
         }
         if (missingPermissions.length) {
           return message.channel.send(`Your missing these required permissions: ${missingPermissions.join(', ')}`);
+        }
+      }
+      if (clientPermissions.length) {
+        for (let i = 0; i < clientPermissions.length; i++) {
+          const hasPermission = message.guild.me.hasPermission(clientPermissions[i]);
+          if (!hasPermission) {
+            missingPermissions.push(clientPermissions[i]);
+          }
+        }
+        if (missingPermissions.length) {
+          return message.channel.send(`I'm missing these required permissions: ${missingPermissions.join(', ')}`);
         }
       }
     }
