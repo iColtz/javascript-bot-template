@@ -18,8 +18,11 @@ class MessageEvent extends Event {
       if (command.guildOnly && !message.guild) {
         return message.channel.send('This command can only be used in guilds.');
       }
-      if (command.ownerOnly && !this.client.owners.includes(message.author.id)) {
+      else if (command.ownerOnly && !this.client.owners.includes(message.author.id)) {
         return message.channel.send('This command can only be used by the owner of this bot.');
+      }
+      else if (command.requiredArgs && args.length < command.requiredArgs) {
+        return message.channel.send(`That is not a valid usage of this command check out \`${this.client.prefix}help ${command.id}\` for more info!`);
       }
       try {
         command.exec(message, args);
