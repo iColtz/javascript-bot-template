@@ -1,4 +1,5 @@
 const { Client } = require('discord.js');
+const { registerEvents } = require('../struct/registries/Registries.js');
 
 class client extends Client {
   constructor(config) {
@@ -8,12 +9,11 @@ class client extends Client {
     });
 
     this.token = config.token;
-
-    this.once('ready', () => console.log('Yoo this is ready!'));
   }
 
   start() {
     super.login(this.token);
+    registerEvents(this);
   }
 }
 
