@@ -4,6 +4,7 @@ class Command {
     this.aliases = options.aliases || [];
     this.guildOnly = Boolean(options.guildOnly) || true;
     this.ownerOnly = Boolean(options.ownerOnly) || false;
+    this.requiredArgs = Number(options.requiredArgs) || 0;
   }
 }
 
