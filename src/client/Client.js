@@ -17,6 +17,8 @@ class client extends Client {
     this.events = new Collection();
 
     this.commands = new Collection();
+
+    this.cooldowns = new Collection();
   }
 
   start() {
