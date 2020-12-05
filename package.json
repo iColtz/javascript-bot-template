@@ -1,0 +1,9 @@
+{
+  "name": "javascript-bot-template",
+  "version": "1.0.0",
+  "description": "Discord bot template written with javascript.",
+  "main": "./src/bot.js",
+  "repository": "https://github.com/iColtz/javascript-bot-template",
+  "author": "iColtz",
+  "license": "MIT"
+}
