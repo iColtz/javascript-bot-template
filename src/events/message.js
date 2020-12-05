@@ -18,6 +18,9 @@ class MessageEvent extends Event {
       if (command.guildOnly && !message.guild) {
         return message.channel.send('This command can only be used in guilds.');
       }
+      if (command.ownerOnly && !this.client.owners.includes(message.author.id)) {
+        return message.channel.send('This command can only be used by the owner of this bot.');
+      }
       try {
         command.exec(message, args);
       }
