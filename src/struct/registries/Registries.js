@@ -9,6 +9,7 @@ function registerEvents(client) {
     const File = require(filepath);
     if (!(File.prototype instanceof Event)) return;
     const event = new File();
+    event.client = client;
     client.events.set(event.id, event);
     client[event.type ? 'once' : 'on'](event.id, (...args) => event.exec(...args));
   });
@@ -20,6 +21,7 @@ function registerCommands(client) {
     const File = require(filepath);
     if (!(File.prototype instanceof Command)) return;
     const command = new File();
+    command.client = client;
     client.commands.set(command.id, command);
   });
 }
