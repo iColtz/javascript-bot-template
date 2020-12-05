@@ -5,6 +5,7 @@ class PingCommand extends Command {
     super({
       id: 'ping',
       aliases: ['p'],
+      cooldown: 3,
     });
   }
 
