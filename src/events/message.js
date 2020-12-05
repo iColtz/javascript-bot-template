@@ -12,7 +12,8 @@ class MessageEvent extends Event {
     if (message.bot || !message.content.startsWith(this.client.prefix)) return;
     const args = message.content.slice(this.client.prefix.length).trim().split(/ +/);
     const commandName = args.shift();
-    const command = this.client.commands.get(commandName);
+    const command = this.client.commands.get(commandName)
+      || this.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (command) {
       try {
         command.exec(message, args);
