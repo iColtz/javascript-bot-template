@@ -6,6 +6,9 @@
   "repository": "https://github.com/iColtz/javascript-bot-template",
   "author": "iColtz",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon ./src/bot.js"
+  },
   "devDependencies": {
     "eslint": "^7.15.0",
     "nodemon": "^2.0.6",
