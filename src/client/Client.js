@@ -12,6 +12,8 @@ class client extends Client {
 
     this.prefix = config.prefix;
 
+    this.owners = config.owners;
+
     this.events = new Collection();
 
     this.commands = new Collection();
