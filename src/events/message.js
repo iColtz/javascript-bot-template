@@ -24,14 +24,28 @@ class MessageEvent extends Event {
       else if (command.requiredArgs && args.length < command.requiredArgs) {
         return message.channel.send(`That is not a valid usage of this command check out \`${this.client.prefix}help ${command.id}\` for more info!`);
       }
-      try {
-        command.exec(message, args);
+      const userPermissions = command.userPermissions;
+      if (userPermissions.length) {
+        const missingPermissions = [];
+        for (let i = 0; i < userPermissions.length; i++) {
+          const hasPermission = message.member.hasPermission(userPermissions[i]);
+          if (!hasPermission) {
+            missingPermissions.push(userPermissions[i]);
+          }
+        }
+        if (missingPermissions.length) {
+          return message.channel.send(`Your missing these required permissions: ${missingPermissions.join(', ')}`);
+        }
       }
-      catch (error) {
-        console.log(error);
-      }
+    }
+    try {
+      command.exec(message, args);
+    }
+    catch (error) {
+      console.log(error);
     }
   }
 }
+
 
 module.exports = MessageEvent;
