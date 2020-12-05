@@ -15,6 +15,9 @@ class MessageEvent extends Event {
     const command = this.client.commands.get(commandName)
       || this.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (command) {
+      if (command.guildOnly && !message.guild) {
+        return message.channel.send('This command can only be used in guilds.');
+      }
       try {
         command.exec(message, args);
       }
