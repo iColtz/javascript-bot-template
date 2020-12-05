@@ -1,4 +1,4 @@
-const { Client } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const { registerEvents } = require('../struct/registries/Registries.js');
 
 class client extends Client {
@@ -9,6 +9,8 @@ class client extends Client {
     });
 
     this.token = config.token;
+
+    this.events = new Collection();
   }
 
   start() {
