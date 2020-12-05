@@ -11,7 +11,8 @@ function registerEvents(client) {
     const event = new File();
     event.client = client;
     client.events.set(event.id, event);
-    client[event.type ? 'once' : 'on'](event.id, (...args) => event.exec(...args));
+    const emitter = event.emitter ? typeof event.emitter === 'string' ? client[event.emitter] : emitter : client;
+    emitter[event.type ? 'once' : 'on'](event.id, (...args) => event.exec(...args));
   });
 }
 
